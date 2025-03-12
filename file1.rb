@@ -61,9 +61,17 @@
 
 # Find and replace string***********
 
+
+
 # file_url = "github.com/rajdeepX/learning_ruby/"
 
-# puts file_url.gsub("i", "e")  
+
+# replace with one character
+# puts file_url.gsub("i", "e")
+# puts file_url.gsub(/i/, "e")
+
+# replace an expression
+# puts file_url.gsub(/[aeiou]/, "")  
 # puts file_url.sub("i", "e")  
 
 
@@ -98,4 +106,42 @@
 # puts "Your result is #{a.to_i + b.to_i}"
 
 
+# text = "aeroplane"
 
+# puts text.slice(1,4)
+# puts text.center(20)
+
+# text = "          aeroplane      "
+# puts text.split
+
+
+
+
+# Iterating over arrays
+
+# s = ["ham", "swiss"]
+# s.each {|i| puts "#{i}"}
+
+
+# Iterating over 2D-arrays
+
+# s = [["ham", "swiss"], ["turkey", "cheddar"], ["roast beef", "gruyere"]]
+# 
+# s.each {|i| 
+#   i.each{|j| puts "#{j}"}
+# }
+
+
+
+# Iterating over hash
+
+# secret_identities = {
+#   "The Batman" => "Bruce Wayne",
+#   "Superman" => "Clark Kent",
+#   "Wonder Woman" => "Diana Prince",
+#   "Freakazoid" => "Dexter Douglas"
+# }
+#   
+# secret_identities.each {|x, y|
+#   puts "#{x}: #{y}"
+# }
