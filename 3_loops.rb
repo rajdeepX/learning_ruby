@@ -37,21 +37,33 @@
 
 # *******************
 
-for num in 2..50
+# for num in 2..50
 
-is_prime = true
+# is_prime = true
 
-    for i in 2..Math.sqrt(num)
-        if num % i == 0
-            is_prime = false
-            break
-        end
-    end
-    if is_prime
-        puts num
-    end
+#     for i in 2..Math.sqrt(num)
+#         if num % i == 0
+#             is_prime = false
+#             break
+#         end
+#     end
+#     if is_prime
+#         puts num
+#     end
+# end
+
+
+# *****************************
+
+num = 20
+a = 0
+b = 1
+c = 0
+
+for i in 0..num
+    puts a
+    c = a + b
+    a = b
+    b = c
+    break if a > num
 end
-
-
-
-
