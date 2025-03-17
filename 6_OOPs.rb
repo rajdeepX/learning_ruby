@@ -474,7 +474,7 @@ class Account
 
     def deposit(amt)
         @balance += amt
-        puts "#{@balance} has been added to your acc #{@holder}"
+        puts "#{amt} has been added to your acc #{@holder}"
     end
 
     def checkBalance
@@ -488,14 +488,14 @@ user2 = Account.new("John", 500)
 user3 = Account.new("Gullu", 1500)
 
 user1.checkBalance()
-
 user1.withdraw(6000)
-
 user1.checkBalance()
-
+puts "\n"
 
 user2.withdraw(200)
 user2.checkBalance()
+puts "\n"
+
 
 user3.deposit(100)
 user3.checkBalance()
