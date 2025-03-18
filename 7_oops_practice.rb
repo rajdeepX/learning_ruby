@@ -189,3 +189,57 @@
 
 # \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
+
+class Animal
+    attr_accessor :name, :species
+    def initialize(name, species)
+        @name = name
+        @species = species
+    end
+    def speak
+        puts "Animals have their own sound"
+    end
+    def move
+        puts "Animals move around the jungle"
+    end
+end
+
+class Lion < Animal
+    def initialize(name, species)
+        super(name, species)
+    end
+    def speak
+        puts "ROAR!!"
+    end
+    def info
+        puts "#{name} is a #{species}"
+    end
+    def move
+        puts "#{species} moves rapidly"
+    end
+end
+
+class Elephant < Animal
+    def initialize(name, species)
+        super(name, species)
+    end
+    def speak
+        puts "TRUMPET!!"
+    end
+    def info
+        puts "#{name} is a #{species}"
+    end
+    def move
+        puts "#{species} moves slowly"
+    end
+end
+
+lion = Lion.new("Leo", "Lion")
+lion.speak
+lion.info
+lion.move
+puts "\n"
+ele = Elephant.new("Manny", "Elephant")
+ele.speak
+ele.info
+ele.move
