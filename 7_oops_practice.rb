@@ -435,3 +435,7 @@
 # machine.buy_item("Chips")
 # puts "\n"
 # puts machine.view_amount()
+
+
+# ****************************************************
+
