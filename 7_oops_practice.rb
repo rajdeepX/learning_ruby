@@ -82,3 +82,110 @@
 
 
 
+# *****************************
+# calculating areas and perimeter of shapes
+
+
+# class Shape
+#     attr_accessor :color
+#     def initialize(color)
+#         @color = color
+#     end
+#     def area
+#         raise NotImplementedError, 'Must be overridden in the subclass'
+#     end
+#     def perimeter
+#         raise NotImplementedError, 'Must be overridden in the subclass'
+#     end
+#     def info
+#         puts "This is a #{color} coloured shape. Area: #{area} and Perimeter: #{perimeter}"
+#     end
+    
+# end
+
+# class Rectangle < Shape
+#     def initialize(width, height, color)
+#         super(color)
+#         @width = width
+#         @height = height
+#     end
+#     def area
+#         @width*@height
+#     end
+#     def perimeter
+#         2*(@width + @height)
+#     end
+# end
+
+# class Square < Shape
+#     def initialize(side, color)
+#         super(color)
+#         @side = side
+#     end
+#     def area
+#         @side**2
+#     end
+#     def perimeter
+#         4*@side
+#     end
+# end
+
+# class Triangle < Shape
+#     def initialize(base, height, side1, side2, color)
+#         super(color)
+#         @base = base
+#         @height = height
+#         @side1 = side1
+#         @side2 = side2
+#     end
+    
+#     def area
+#             if @side1 + @side2 > @base && @base + @side1 > @side2 && @base + @side2 > @side1
+#                 0.5*@base*@height
+#             else puts "Invalid input for a triangle."
+#             end
+#     end
+#     def perimeter
+#             if @side1 + @side2 > @base && @base + @side1 > @side2 && @base + @side2 > @side1
+#                 @side1 + @side2 + @base
+#             else puts "Invalid input for a triangle."
+#             end
+#     end
+# end
+
+# class Circle < Shape
+#     def initialize(radius, color)
+#         super(color)
+#         @radius = radius
+#     end
+#     def area
+#         Math::PI * @radius**2
+#     end
+#     def perimeter
+#         2*Math::PI*@radius
+#     end
+# end
+
+# obj1 = Rectangle.new(10, 25, "Red")
+# puts obj1.area
+# puts obj1.perimeter
+# obj1.info
+# puts "\n"
+# obj2 = Square.new(20, "Green")
+# puts obj2.area
+# puts obj2.perimeter
+# obj2.info
+# puts "\n"
+# obj3 = Circle.new(7, "Blue")
+# puts obj3.area
+# puts obj3.perimeter
+# obj3.info
+# puts "\n"
+# obj4 = Triangle.new(7, 5, 6, 9, "Yellow")
+# puts obj4.area
+# puts obj4.perimeter
+# obj4.info
+
+
+# \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
