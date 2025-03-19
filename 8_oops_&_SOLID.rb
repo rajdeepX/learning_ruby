@@ -198,4 +198,64 @@
 # admin.list_members()
 
 # ***********************************
+ 
+class Bank_Account
+    attr_accessor :account_holder, :account_num
+    def initialize(account_holder, account_num, balance)
+        @account_holder = account_holder
+        @account_num = account_num
+        @balance = balance
+        @transactions = []
+    end
+    def withdraw(amount)
+        if amount <= @balance
+            @balance -= amount
+        elsif amount > @balance
+            puts "Insufficient balance"
+        else 
+            puts "Could not process"
+        end
+        @transactions << Transaction.new("Withdraw", amount)
+    end
+    def deposit(amount)
+        @balance += amount
+        @transactions << Transaction.new("Deposit", amount)
+    end
+    def view_balance
+        puts "Your balance: #{@balance}"
+    end
+    def transaction_history
+        if @transactions.empty?
+            puts "No transactions done"
+        else 
+            puts "Transaction history"
+            @transactions.each {|transaction| puts transaction.transaction_info}
+        end
+        view_balance()
+    end
 
+
+end
+
+
+class Transaction
+    attr_accessor :type, :amount
+    def initialize(type, amount)
+        @type = type
+        @amount = amount
+        @time = Time.now
+    end
+    def transaction_info
+        "#{@type} of #{@amount} on #{@time}"
+    end
+end
+
+
+user = Bank_Account.new("Eno", "112233", 5000)
+user.deposit(1000)
+user.deposit(1200)
+user.deposit(100)
+user.deposit(1300)
+user.withdraw(2000)
+user.withdraw(6000)
+user.transaction_history()
