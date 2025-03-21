@@ -119,3 +119,110 @@
 
 # news = News.new()
 # news.menu
+
+
+
+# *********************************************
+
+
+class Flashcard
+    attr_accessor :question, :answer, :subject
+    def initialize(question, answer, subject)
+        @question = question
+        @answer = answer
+        @subject = subject
+    end
+end
+
+
+class Flashcard_Manager
+    def initialize
+        @flashcard = []
+    end
+
+    def add_flashcard(question, answer, subject)
+        card = Flashcard.new(question, answer, subject)
+        @flashcard << card
+    end
+
+    def get_flashcards(subject)
+        @flashcard.select { |flashcard| flashcard.subject == subject }
+    end
+end
+
+
+class Flashcard_App
+    def initialize
+        @manager = Flashcard_Manager.new()
+    end
+
+    def menu
+        puts "Welcome to the Flashcard Quiz App!"
+        puts "1. Create a flashcard"
+        puts "2. Start a quiz"
+        puts "3. Review flashcards"
+        puts "0. Exit"
+        print "> "
+        choice = gets.chomp.to_i
+
+        case choice
+        when 1 then create_flashcard
+        when 2 then start_quiz
+        when 3 then view_questions
+        when 0 then puts "Exiting quiz"
+        else 
+            "Invalid input"
+            menu()
+        end
+    end
+
+    def create_flashcard
+        print "Enter the question: "
+        question = gets.chomp
+        print "Enter the answer: "
+        answer = gets.chomp
+        print "Enter the subject: "
+        subject = gets.chomp
+
+        @manager.add_flashcard(question, answer, subject)
+
+        puts "Flashcard added successfully!"
+        menu()
+    end
+
+end
+
+def start_quiz
+
+    print "Enter the subject for the quiz: "
+    subject = gets.chomp
+    flashcards = @manager.get_flashcards(subject)
+
+
+    if flashcards.empty?
+      puts "No flashcards found for this subject."
+      display_menu
+      return
+    end
+
+    correct_answers = 0
+
+    flashcards.each do |flashcard|
+      puts "Question: #{flashcard.question}"
+      print "Your answer: "
+      user_answer = gets.chomp
+      if user_answer.downcase == flashcard.answer.downcase
+        puts "Correct!"
+        correct_answers += 1
+      else
+        puts "Incorrect! The correct answer is #{flashcard.answer}."
+      end
+    end
+
+    puts "Quiz completed! You got #{correct_answers} out of #{flashcards.length} correct."
+    menu()
+end
+
+
+start = Flashcard_App.new()
+start.menu()
