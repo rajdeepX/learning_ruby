@@ -327,3 +327,143 @@
 
 
 # ***************************
+
+# ATM SYSTEM
+
+
+class BankAccount
+attr_reader :account_number, :balance, :transactions
+attr_accessor :pin
+
+def initialize(account_number, pin, balance = 0)
+    @account_number = account_number
+    @pin = pin
+    @balance = balance
+    @transactions = []
+    @daily_withdrawal_limit = 5000
+    @withdrawn_today = 0
+end
+
+def deposit(amount)
+    @balance += amount
+    @transactions << "Deposited ₹#{amount}"
+    puts "Deposited ₹#{amount}. New balance: ₹#{@balance}"
+end
+
+def withdraw(amount)
+    if amount > @balance
+    puts "Insufficient balance!"
+    elsif @withdrawn_today + amount > @daily_withdrawal_limit
+    puts "Withdrawal limit exceeded! You can withdraw up to ₹#{@daily_withdrawal_limit - @withdrawn_today} today."
+    else
+    @balance -= amount
+    @withdrawn_today += amount
+    @transactions << "Withdrew ₹#{amount}"
+    puts "Withdrew ₹#{amount}. New balance: ₹#{@balance}"
+    end
+end
+
+def check_balance
+    puts "Current balance: ₹#{@balance}"
+end
+
+def change_pin(new_pin)
+    @pin = new_pin
+    puts "PIN changed successfully!"
+end
+
+def show_transactions
+    puts "Transaction History:"
+    @transactions.each { |t| puts "-- #{t}" }
+end
+end
+  
+class ATM
+def initialize
+    @accounts = {}
+end
+
+def menu
+    loop do
+        puts "\n1. Create Account\n2. Access Account\n3. Exit"
+        print "Choose an option: "
+        choice = gets.chomp.to_i
+      
+        case choice
+        when 1
+          create_account
+        when 2
+          access_account
+        when 3
+          puts "Thank you for using our ATM!"
+          break
+        else
+          puts "Invalid choice! Try again."
+        end
+      end
+end
+
+
+def create_account
+    print "Enter Account Number: "
+    acc_num = gets.chomp
+    print "Set a 4-digit PIN: "
+    pin = gets.chomp
+
+    @accounts[acc_num] = BankAccount.new(acc_num, pin, 1000)
+    puts "Account created successfully! Your initial balance is ₹1000."
+end
+
+def access_account
+    print "Enter Account Number: "
+    acc_num = gets.chomp
+    print "Enter PIN: "
+    pin = gets.chomp
+
+    account = @accounts[acc_num]
+
+    if account && account.pin == pin
+    puts "Login Successful!"
+    atm_menu(account)
+    else
+    puts "Invalid Account Number or PIN!"
+    end
+end
+
+def atm_menu(account)
+    loop do
+    puts "\n1. Deposit\n2. Withdraw\n3. Check Balance\n4. Change PIN\n5. Transaction History\n6. Exit"
+    print "Choose an option: "
+    choice = gets.chomp.to_i
+
+    case choice
+    when 1
+        print "Enter amount to deposit: ₹"
+        amount = gets.chomp.to_i
+        account.deposit(amount)
+    when 2
+        print "Enter amount to withdraw: ₹"
+        amount = gets.chomp.to_i
+        account.withdraw(amount)
+    when 3
+        account.check_balance
+    when 4
+        print "Enter new PIN: "
+        new_pin = gets.chomp
+        account.change_pin(new_pin)
+    when 5
+        account.show_transactions
+    when 6
+        puts "Exiting ATM..."
+        break
+    else
+        puts "Invalid choice! Try again."
+    end
+    end
+end
+end
+  
+
+atm = ATM.new
+atm.menu()
+  
