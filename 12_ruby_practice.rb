@@ -219,3 +219,111 @@
 # manager.display_contacts()
 
 
+# *********************************************
+
+# SIMPLE PASSWORD MANAGER
+
+
+# class PasswordManager
+#     def initialize
+#       @passwords = {}
+#     end
+
+#     def menu
+#         loop do
+#             puts "\n--- Password Manager ---"
+#             puts "1. Add Password"
+#             puts "2. Retrieve Password"
+#             puts "3. Update Password"
+#             puts "4. Delete Password"
+#             puts "5. List All Passwords"
+#             puts "6. Exit"
+#             print "Choose an option: "
+          
+#             choice = gets.chomp().to_i
+          
+#             case choice
+#             when 1
+#               print "Website: "
+#               website = gets.chomp
+#               print "Username: "
+#               username = gets.chomp
+#               print "Password: "
+#               password = gets.chomp
+#               add_password(website, username, password)
+#             when 2
+#               print "Website: "
+#               website = gets.chomp
+#               get_password(website)
+#             when 3
+#               print "Website: "
+#               website = gets.chomp
+#               print "New Password: "
+#               new_password = gets.chomp
+#               update_password(website, new_password)
+#             when 4
+#               print "Website: "
+#               website = gets.chomp
+#               delete_password(website)
+#             when 5
+#               list_passwords
+#             when 6
+#               puts "Goodbye!"
+#               break
+#             else
+#               puts "Invalid choice!"
+#             end
+#           end
+#     end
+
+  
+#     def add_password(website, username, password)
+#       @passwords[website] = { username: username, password: password }
+#       puts "Password saved!"
+#     end
+  
+#     def get_password(website)
+#       entry = @passwords[website]
+#       if entry
+#         puts "Website: #{website}"
+#         puts "Username: #{entry[:username]}"
+#         puts "Password: #{entry[:password]}"
+#       else
+#         puts "No password found for #{website}."
+#       end
+#     end
+  
+#     def update_password(website, new_password)
+#       if @passwords.key?(website)
+#         @passwords[website][:password] = new_password
+#         puts "Password updated!"
+#       else
+#         puts "No entry found."
+#       end
+#     end
+  
+#     def delete_password(website)
+#       if @passwords.delete(website)
+#         puts "Password deleted!"
+#       else
+#         puts "No entry found."
+#       end
+#     end
+  
+#     def list_passwords
+#       if @passwords.empty?
+#         puts "No passwords stored!"
+#       else
+#         @passwords.each do |website, data|
+#           puts "Website: #{website}, Username: #{data[:username]}, Password: #{data[:password]}"
+#         end
+#       end
+#     end
+# end
+
+# manager = PasswordManager.new
+# manager.menu()
+
+
+
+# ***************************
