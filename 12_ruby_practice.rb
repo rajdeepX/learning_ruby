@@ -99,3 +99,123 @@
 
 # **********************************************************
 
+# CONTACT MANAGEMENT SYSTEM
+
+
+# class Contact
+#     attr_accessor :name, :phone, :email
+#     def initialize(name, phone, email)
+#         @name = name
+#         @phone = phone
+#         @email = email
+#     end
+# end
+
+
+# class Contacts_Manager
+#     FILE_NAME = "contacts.txt"
+
+#     attr_accessor :contacts
+#     def initialize
+#         @contacts = []
+#         load_contacts()
+#     end
+
+#     def add_contact(new_contact)
+#         contact = {
+#             Name: new_contact.name,
+#             Phone: new_contact.phone,
+#             Email: new_contact.email,
+#         }
+
+#         @contacts << contact
+#         save_contacts()
+#         puts "Contact successfully added!"
+#         puts "----"
+#     end
+
+#     def update_contact(name, new_name: nil, new_phone: nil, new_email: nil)
+#         contact = @contacts.find {|x| x[:Name].downcase == name.downcase}
+#         if contact
+#             contact[:Name] = new_name if new_name
+#             contact[:Phone] = new_phone if new_phone
+#             contact[:Email] = new_email if new_email
+#             puts "Contact updated!"
+#             save_contacts()
+#         else puts "Contact not found!"
+#         end
+#     end
+
+#     def search_contact(name)
+#         contact = @contacts.find {|x| x[:Name].downcase == name.downcase}
+#         if contact
+#             puts "Here are your results:"
+#             puts "#{contact[:Name]} | #{contact[:Phone]} | #{contact[:Email]}"
+#             puts "----"
+#         else
+#             puts "No contact found!"
+#         end
+#     end
+
+#     def delete_contact(name)
+#         contact = @contacts.find {|x| x[:Name].downcase == name.downcase}
+#         if contact
+#             @contacts.delete(contact)
+#             puts "Contact deleted!"
+#             save_contacts()
+#         else
+#             puts "No contact found!"
+#         end
+#     end
+    
+#     def display_contacts
+#         if @contacts.empty?
+#             puts "No contacts to display!"
+#         else
+#             @contacts.each {|x|
+#             puts "#{x[:Name]} | #{x[:Phone]} | #{x[:Email]}"
+#             }
+#         end
+#     end
+
+
+#     private
+
+#     def save_contacts
+#         File.open(FILE_NAME, "w") { |file|
+#             @contacts.each { |contact|
+#                 file.puts "#{contact[:Name]}|#{contact[:Phone]}|#{contact[:Email]}"
+#             }
+#             }
+#     end
+
+#     def load_contacts
+#         return unless File.exist?(FILE_NAME)
+
+#         File.foreach(FILE_NAME) { |line|
+#             name, phone, email = line.strip.split("|")
+#             @contacts << { Name: name, Phone: phone, Email: email }
+#         }
+#     end
+# end
+
+
+# contact1 = Contact.new("David", 789456, "david@email.com")
+# contact2 = Contact.new("Nolan", 965241, "nolanC@email.com")
+# contact3 = Contact.new("Christian", 905042, "bale@email.com")
+
+# manager = Contacts_Manager.new()
+
+# manager.add_contact(contact1)
+# manager.add_contact(contact2)
+# manager.add_contact(contact3)
+
+# manager.search_contact("christian")
+# # manager.delete_contact("david")
+
+# manager.display_contacts()
+
+# manager.update_contact("nolan", new_phone: 965236)
+# manager.display_contacts()
+
+
