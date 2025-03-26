@@ -218,3 +218,138 @@
 # *********************
 
 
+# INVENTORY SYSTEM
+
+# require 'json'
+
+# class Inventory
+#   def initialize
+#     @inventory_file = 'inventory.json'
+#     load_inventory
+#   end
+
+#   def load_inventory
+#     if File.exist?(@inventory_file)
+#       file = File.read(@inventory_file)
+#       @inventory = JSON.parse(file)
+#     else
+#       @inventory = {}
+#     end
+#   end
+
+#   def save_inventory
+#     File.write(@inventory_file, JSON.pretty_generate(@inventory))
+#   end
+
+#   def add_product
+#     puts "Enter product name:"
+#     name = gets.chomp
+#     puts "Enter product price:"
+#     price = gets.chomp.to_f
+#     puts "Enter product stock quantity:"
+#     stock = gets.chomp.to_i
+
+#     @inventory[name] = { price: price, stock: stock }
+#     save_inventory
+#     puts "Product added successfully!"
+#   end
+
+#   def update_product
+#     puts "Enter product name to update:"
+#     name = gets.chomp
+#     if @inventory.key?(name)
+#       puts "Enter new price (current: #{@inventory[name][:price]}):"
+#       price = gets.chomp.to_f
+#       puts "Enter new stock quantity (current: #{@inventory[name][:stock]}):"
+#       stock = gets.chomp.to_i
+
+#       @inventory[name] = { price: price, stock: stock }
+#       save_inventory
+#       puts "Product updated successfully!"
+#     else
+#       puts "Product not found."
+#     end
+#   end
+
+#   def delete_product
+#     puts "Enter product name to delete:"
+#     name = gets.chomp
+#     if @inventory.delete(name)
+#       save_inventory
+#       puts "Product deleted successfully!"
+#     else
+#       puts "Product not found."
+#     end
+#   end
+
+#   def process_sale
+#     puts "Enter product name to sell:"
+#     name = gets.chomp
+#     if @inventory.key?(name)
+#       puts "Enter quantity to sell:"
+#       quantity = gets.chomp.to_i
+
+#       if @inventory[name][:stock] >= quantity
+#         @inventory[name][:stock] -= quantity
+#         save_inventory
+#         total_price = @inventory[name][:price] * quantity
+#         puts "Sale processed. Total: $#{total_price}"
+#       else
+#         puts "Not enough stock."
+#       end
+#     else
+#       puts "Product not found."
+#     end
+#   end
+
+#   def view_inventory
+#     puts "Current Inventory:"
+#     @inventory.each do |name, details|
+#       puts "#{name} - Price: $#{details[:price]} - Stock: #{details[:stock]}"
+#     end
+#   end
+
+#   def show_menu
+#     puts "Inventory Management System"
+#     puts "1. View Inventory"
+#     puts "2. Add Product"
+#     puts "3. Update Product"
+#     puts "4. Delete Product"
+#     puts "5. Process Sale"
+#     puts "6. Exit"
+#     print "Choose an option: "
+#     gets.chomp.to_i
+#   end
+
+#   def run
+#     loop do
+#       case show_menu
+#       when 1
+#         view_inventory
+#       when 2
+#         add_product
+#       when 3
+#         update_product
+#       when 4
+#         delete_product
+#       when 5
+#         process_sale
+#       when 6
+#         puts "Exiting system."
+#         break
+#       else
+#         puts "Invalid option. Try again."
+#       end
+#     end
+#   end
+# end
+
+
+# system = Inventory.new
+# system.run
+
+
+
+# *******************************
+
+
